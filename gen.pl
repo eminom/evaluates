@@ -8,7 +8,7 @@ use Cwd qw/getcwd/;
 my $target_dir = 'e:/Projects/heroman/Resources/commercial/db';
 die if not -d $target_dir;
 
-my @arr = qw/hero word/;
+my @arr = qw/hero word battleforce/;
 for my$a(@arr){
 	my $cmd = "node $a.js > \"$target_dir/$a.lua\"";
 	#print $cmd,"\n";
