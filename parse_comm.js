@@ -21,7 +21,7 @@ function getField(node, name){
 }
 
 function isNumber(a){
-	return 'NaN' != parseFloat(a);
+	return !Number.isNaN(parseFloat(a));
 }
 
 function traverseNode(node, depth){
@@ -32,9 +32,9 @@ function traverseNode(node, depth){
 			continue;
 		}
 		if(isNumber(nodes[i].text())){
-			print(nodes[i].name() + ' = ' +  nodes[i].text() ,  depth);
+			print(nodes[i].name() + ' = ' +  nodes[i].text() + ',' ,  depth);
 		} else {
-			print(nodes[i].name() + ' = \'' + parseFloat(nodes[i].text()) + '\'', depth);
+			print(nodes[i].name() + ' = \'' + parseFloat(nodes[i].text()) + '\'' + ',' , depth);
 		}
 	}
 }
