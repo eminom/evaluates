@@ -24,36 +24,37 @@ function isNumber(a){
 	return !Number.isNaN(parseFloat(a));
 }
 
+function printKeyValue(key, value, depth) {
+	if(isNumber(key)){
+		print(key + ' = '   + value + ',' ,  depth);
+	} else {
+		print(key + ' = \'' + value + '\'' + ',' , depth);
+	}
+}
 
 // Write all properties in elements into Lua table
 //
-function traverseNode(node, depth){
+function traverseNode(node, depth, handler){
+	handler = handler || printKeyValue;
 	var nodes = node.childNodes();
 	var length = nodes.length;
 	for(var i=0;i<length;++i){
 		if(nodes[i].name() == 'text'){
 			continue;
 		}
-		if(isNumber(nodes[i].text())){
-			print(nodes[i].name() + ' = ' +  nodes[i].text() + ',' ,  depth);
-		} else {
-			print(nodes[i].name() + ' = \'' + nodes[i].text() + '\'' + ',' , depth);
-		}
+		handler(nodes[i].name(), nodes[i].text(), depth);
 	}
 }
 
 
 // Output all the attributes in Lua table
 // Iterates the attributes' array
-function traverseAttribs(node, depth){
+function traverseAttribs(node, depth, handler){
+	handler = handler || printKeyValue;
 	var attrs = node.attrs();
 	var length = attrs.length;
 	for(var i=0;i<length;++i){
-		if(isNumber(attrs[i].value())){
-			print(attrs[i].name() + ' = ' + attrs[i].value() + ',', depth);
-		} else {
-			print(attrs[i].name() + ' = \'' + attrs[i].value() + '\'' + ',', depth);
-		}
+		handler(attrs[i].name(), attrs[i].value(), depth);
 	}
 }
 
