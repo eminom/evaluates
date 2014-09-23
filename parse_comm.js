@@ -17,13 +17,16 @@ function getField(node, name){
 			return nodes[i].text();
 		}
 	}
-	throw 'no field of ' + name;
+	throw new Error('no field of ' + name);
 }
 
 function isNumber(a){
 	return !Number.isNaN(parseFloat(a));
 }
 
+
+// Write all properties in elements into Lua table
+//
 function traverseNode(node, depth){
 	var nodes = node.childNodes();
 	var length = nodes.length;
@@ -39,9 +42,25 @@ function traverseNode(node, depth){
 	}
 }
 
+
+// Output all the attributes in Lua table
+// Iterates the attributes' array
+function traverseAttribs(node, depth){
+	var attrs = node.attrs();
+	var length = attrs.length;
+	for(var i=0;i<length;++i){
+		if(isNumber(attrs[i].value())){
+			print(attrs[i].name() + ' = ' + attrs[i].value() + ',', depth);
+		} else {
+			print(attrs[i].name() + ' = \'' + attrs[i].value() + '\'' + ',', depth);
+		}
+	}
+}
+
 module.exports = {
 	print:print,
 	getField:getField,
 	isNumber:isNumber,
-	traverseNode:traverseNode
+	traverseNode:traverseNode,
+	traverseAttribs:traverseAttribs,
 };

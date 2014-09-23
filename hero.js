@@ -3,8 +3,9 @@
 var libxmljs = require('libxmljs');
 var fs = require('fs');
 var ut = require('./parse_comm');
+var assert = require('assert');
 
-var data = fs.readFileSync('hero.xml').toString('utf8');
+var data = fs.readFileSync('designs/xmls/hero.xml').toString('utf8');
 var xmlDoc = libxmljs.parseXml(data);
 
 function main(){
@@ -16,12 +17,13 @@ function main(){
 	ut.print('HeroProperties = ReadOnly{');
 	for(var i=0;i<kids.length;++i){
 		if(kids[i].name() != 'text') {
-			var id = ut.getField(kids[i],'heroId');
+			var id = kids[i].attr('heroId');
+			assert(id != null, 'must be there');
 			var msg = '[\'' + id + '\']' + ' = ReadOnly{';
 			ut.print(msg, 1);
-			ut.traverseNode(kids[i], 2);
+			ut.traverseAttribs(kids[i], 2);
 			ut.print('},  ', 1);
-			ut.print()
+			ut.print();
 		}
 	}
 	ut.print('}');
