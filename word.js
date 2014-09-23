@@ -14,7 +14,7 @@ function main(){
 	for(var i=0;i<kids.length;++i){
 		if(kids[i].name() != 'text') {
 			var id = u.getField(kids[i],'wordId');
-			var msg = id + ' = {';
+			var msg = '[\'' + id + '\']' + ' = {';
 			u.print(msg, 1);
 			u.traverseNode(kids[i], 2);
 			u.print('},  ', 1);

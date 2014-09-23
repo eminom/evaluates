@@ -34,7 +34,7 @@ function traverseNode(node, depth){
 		if(isNumber(nodes[i].text())){
 			print(nodes[i].name() + ' = ' +  nodes[i].text() + ',' ,  depth);
 		} else {
-			print(nodes[i].name() + ' = \'' + parseFloat(nodes[i].text()) + '\'' + ',' , depth);
+			print(nodes[i].name() + ' = \'' + nodes[i].text() + '\'' + ',' , depth);
 		}
 	}
 }
