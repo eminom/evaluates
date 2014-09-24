@@ -19,7 +19,7 @@ function main(){
 		if(kids[i].name() != 'text') {
 			var id = kids[i].attr('heroId');
 			assert(id != null, 'must be there');
-			var msg = '[\'' + id + '\']' + ' = ReadOnly{';
+			var msg = '[\'' + id.value() + '\']' + ' = ReadOnly{';
 			ut.print(msg, 1);
 			ut.traverseAttribs(kids[i], 2);
 			ut.print('},  ', 1);

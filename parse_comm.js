@@ -24,8 +24,12 @@ function isNumber(a){
 	return !Number.isNaN(parseFloat(a));
 }
 
+
 function printKeyValue(key, value, depth) {
-	if(isNumber(key)){
+	key = key.replace(/\b\w+\b/g, function(word){
+		return word.substring(0,1).toUpperCase() + word.substring(1);}
+	);
+	if(isNumber(value)){
 		print(key + ' = '   + value + ',' ,  depth);
 	} else {
 		print(key + ' = \'' + value + '\'' + ',' , depth);

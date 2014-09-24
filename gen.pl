@@ -21,13 +21,15 @@ sub writeOuts{
 }
 
 sub main{
-	my @arr = qw/hero word battleforce/;
+	my @arr = qw/hero word battleforce global/;
 	for my$a(@arr){
 		writeOuts $a, $target_dir;
 		writeOuts $a, $test_dir;
 	}
 }
 
+
+print 'Working under ', getcwd(), "\n";
 main;
 print 'done';
 
