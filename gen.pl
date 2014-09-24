@@ -6,12 +6,28 @@ use strict;
 use Cwd qw/getcwd/;
 
 my $target_dir = 'e:/Projects/heroman/Resources/commercial/db';
-die if not -d $target_dir;
+my $test_dir = './outputs';
 
-my @arr = qw/hero word battleforce/;
-for my$a(@arr){
-	my $cmd = "node $a.js > \"$target_dir/$a.lua\"";
-	#print $cmd,"\n";
+die if not -d $target_dir;
+mkdir $test_dir;
+die if not -d $test_dir;
+
+sub writeOuts{
+	my $in = shift // die "No inputs";
+	my $out_d = shift // die "No output directory";
+	my $cmd = "node $in.js > \"$out_d/$in.lua\"";
 	system($cmd);
 	die "Error running $cmd" if $?;
 }
+
+sub main{
+	my @arr = qw/hero word battleforce/;
+	for my$a(@arr){
+		writeOuts $a, $target_dir;
+		writeOuts $a, $test_dir;
+	}
+}
+
+main;
+print 'done';
+
