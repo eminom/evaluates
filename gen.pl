@@ -15,7 +15,7 @@ die if not -d $test_dir;
 sub writeOuts{
 	my $in = shift // die "No inputs";
 	my $out_d = shift // die "No output directory";
-	my $cmd = "node $in.js > \"$out_d/$in.lua\"";
+	my $cmd = "node \"js/$in.js\" > \"$out_d/$in.lua\"";
 	system($cmd);
 	die "Error running $cmd" if $?;
 }
