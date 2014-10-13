@@ -32,7 +32,7 @@ function printKeyValue(key, value, depth) {
 	if(isNumber(value)){
 		print(key + ' = '   + value + ',' ,  depth);
 	} else {
-		print(key + ' = \'' + value + '\'' + ',' , depth);
+		print(key + ' = _Text(\'' + value + '\')' + ',' , depth);
 	}
 }
 
