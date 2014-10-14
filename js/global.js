@@ -14,7 +14,7 @@ function main(){
 	var kids = global.childNodes();
 	ut.print('-- This file is generated automatically')
 	ut.print('-- Do not modify this file manually')
-	ut.print('GlobalDictionary = ReadOnly{');
+	ut.print('Glob = ReadOnly{');
 	ut.traverseNode(global, 2);
 	ut.print('}');
 }
