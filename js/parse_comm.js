@@ -24,15 +24,22 @@ function isNumber(a){
 	return !Number.isNaN(parseFloat(a));
 }
 
+var isConstValue = (function(){
+	var pat = /^[A-Z]\w*\.[A-Z]\w*$/;
+	return function(string){
+		return pat.exec(string);
+	}
+})();
 
 function printKeyValue(key, value, depth) {
 	key = key.replace(/\b\w+\b/g, function(word){
 		return word.substring(0,1).toUpperCase() + word.substring(1);}
 	);
-	if(isNumber(value)){
+	if(isNumber(value) || isConstValue(value)){
 		print(key + ' = '   + value + ',' ,  depth);
 	} else {
-		print(key + ' = _Text(\'' + value + '\')' + ',' , depth);
+		//print(key + ' = _Text(\'' + value + '\')' + ',' , depth);
+		print(key + ' = \'' + value + '\'' + ',' , depth);
 	}
 }
 
