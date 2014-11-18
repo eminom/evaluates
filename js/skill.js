@@ -18,7 +18,7 @@ function main(){
 
 	for(var i=0;i<kids.length;++i){
 		if(kids[i].name() == 'skill') {
-			var id = kids[i].attr('skillId');
+			var id = kids[i].attr('skillID');
 			assert(id != null, 'must be there');
 			var msg = '[\'' + id.value() + '\']' + ' = ReadOnly{';
 			ut.print(msg, 1);
