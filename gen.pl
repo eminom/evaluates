@@ -21,7 +21,7 @@ sub writeOuts{
 }
 
 sub main{
-	my @arr = qw/hero word battleforce global skill/;
+	my @arr = qw/hero word battleforce global skill battle/;
 	for my$a(@arr){
 		writeOuts $a, $target_dir;
 		writeOuts $a, $test_dir;
